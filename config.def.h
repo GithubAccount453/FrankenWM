@@ -176,7 +176,7 @@ static key keys[] = {
     {  MOD4|CONTROL,     XK_y,          adjust_gaps,       {.i = -1}},
     {  MOD4|CONTROL,     XK_;,          adjust_gaps,       {.i = +1}},
     /* toggle the panel space */
-    {  MOD4|CONTROL,     XK_d,          togglepanel,       {NULL}},
+    {  MOD4|CONTROL,     XK_v,          togglepanel,       {NULL}},
 
     /* exit */
     {  MOD4|CONTROL,     XK_q,          quit,              {.i = 0}},
