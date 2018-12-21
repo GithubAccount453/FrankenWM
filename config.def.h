@@ -70,9 +70,9 @@ static const char *menucmd[] = { "dmenu_run", NULL };
 static const char *scrpcmd[] = { "xterm", "-T", "scratchpad", NULL };
 /* static const char *scrpcmd[] = { "urxvt", "-name", "scratchpad",  NULL }; */
 
-#define DESKTOPCHANGE(E,K) \
-    {  MOD4,             E,              change_desktop, {.i = K}}, \
-    {  MOD4|ShiftMask,   E,              client_to_desktop, {.i = K}},
+#define DESKTOPCHANGE(K,N) \
+    {  MOD4,             K,              change_desktop, {.i = N}}, \
+    {  MOD4|ShiftMask,   K,              client_to_desktop, {.i = N}},
 
 /*
  * EDIT THIS: shortcuts
@@ -84,44 +84,44 @@ static key keys[] = {
     /* modifier          key            function           argument */
 
     /* select windows */
-    {  MOD4,             XK_n,          next_win,          {NULL}},
-    {  MOD4,             XK_e,          prev_win,          {NULL}},
+    {  MOD4,             XK_j,          next_win,          {NULL}},
+    {  MOD4,             XK_k,          prev_win,          {NULL}},
     /* select the master window, or the previously focussed slave */
     {  MOD4,             XK_w,          focusmaster,       {NULL}},
     /* select urgent window */
     {  MOD4,             XK_BackSpace,  focusurgent,       {NULL}},
 
     /* move windows */
-    {  MOD4|SHIFT,       XK_n,          move_down,         {NULL}},
-    {  MOD4|SHIFT,       XK_e,          move_up,           {NULL}},
+    {  MOD4|SHIFT,       XK_j,          move_down,         {NULL}},
+    {  MOD4|SHIFT,       XK_k,          move_up,           {NULL}},
     /* swap the current window to master */
     {  MOD4,             XK_Return,     swap_master,       {NULL}},
     /* maximize the current window */
-    {  MOD4,             XK_t,          maximize,          {NULL}},
+    {  MOD4,             XK_f,          maximize,          {NULL}},
     /* minimize window to queue/pull window from queue */
-    {  MOD4,             XK_h,          minimize,          {NULL}},
-    {  MOD4,             XK_k,          restore,           {NULL}},
+    {  MOD4,             XK_m,          minimize,          {NULL}},
+    {  MOD4,             XK_n,          restore,           {NULL}},
     /* move the current window to the center of the screen, floating */
     {  MOD4,             XK_c,          centerwindow,      {NULL}},
     /* toggles inverted stacking modes (left/top stack) */
-    {  MOD4|SHIFT,       XK_u,          invertstack,       {NULL}},
+    {  MOD4|SHIFT,       XK_i,          invertstack,       {NULL}},
     /* show/hide all windows on all desktops */
-    {  MOD4|CONTROL,     XK_r,          showhide,          {NULL}},
+    {  MOD4|CONTROL,     XK_s,          showhide,          {NULL}},
     /* toggle the scratchpad terminal, if enabled */
-    {  MOD4,             XK_r,          togglescratchpad,  {NULL}},
+    {  MOD4,             XK_s,          togglescratchpad,  {NULL}},
 
     /* move floating windows */
-    {  MOD4|MOD1,        XK_n,          float_y,           {.i = +10}},
-    {  MOD4|MOD1,        XK_e,          float_y,           {.i = -10}},
-    {  MOD4|MOD1,        XK_m,          float_x,           {.i = -10}},
-    {  MOD4|MOD1,        XK_i,          float_x,           {.i = +10}},
+    {  MOD4|MOD1,        XK_j,          float_y,           {.i = +10}},
+    {  MOD4|MOD1,        XK_k,          float_y,           {.i = -10}},
+    {  MOD4|MOD1,        XK_h,          float_x,           {.i = -10}},
+    {  MOD4|MOD1,        XK_l,          float_x,           {.i = +10}},
     /* resize floating windows */
-    {  MOD4|MOD1|CONTROL,XK_n,          resize_y,          {.i = +10}},
-    {  MOD4|MOD1|CONTROL,XK_e,          resize_y,          {.i = -10}},
-    {  MOD4|MOD1|CONTROL,XK_m,          resize_x,          {.i = -10}},
-    {  MOD4|MOD1|CONTROL,XK_i,          resize_x,          {.i = +10}},
+    {  MOD4|MOD1|CONTROL,XK_j,          resize_y,          {.i = +10}},
+    {  MOD4|MOD1|CONTROL,XK_k,          resize_y,          {.i = -10}},
+    {  MOD4|MOD1|CONTROL,XK_h,          resize_x,          {.i = -10}},
+    {  MOD4|MOD1|CONTROL,XK_l,          resize_x,          {.i = +10}},
     /* reset the selected floating window to tiling */
-    {  MOD4,             XK_b,          tilemize,          {NULL}},
+    {  MOD4,             XK_t,          tilemize,          {NULL}},
 
     /* mode selection */
     {  MOD4|SHIFT,       XK_t,          switch_mode,       {.i = TILE}},
@@ -136,7 +136,7 @@ static key keys[] = {
 
     /* spawn terminal, dmenu, w/e you want to */
     {  MOD4|SHIFT,       XK_Return,     spawn,             {.com = termcmd}},
-    {  MOD4,             XK_p,          spawn,             {.com = menucmd}},
+    {  MOD4,             XK_r,          spawn,             {.com = menucmd}},
     /* kill current window */
     {  MOD4|SHIFT,       XK_c,          killclient,        {NULL}},
 
@@ -154,29 +154,29 @@ static key keys[] = {
     /* toggle to last desktop */
     {  MOD4,             XK_Tab,        last_desktop,      {NULL}},
     /* jump to the next/previous desktop */
-    {  MOD4|SHIFT,       XK_m,          rotate,            {.i = -1}},
-    {  MOD4|SHIFT,       XK_i,          rotate,            {.i = +1}},
+    {  MOD4|SHIFT,       XK_h,          rotate,            {.i = -1}},
+    {  MOD4|SHIFT,       XK_l,          rotate,            {.i = +1}},
     /* jump to the next/previous desktop with just the current window */
-    {  MOD4|CONTROL,     XK_m,          rotate_client,     {.i = -1}},
-    {  MOD4|CONTROL,     XK_i,          rotate_client,     {.i = +1}},
+    {  MOD4|CONTROL,     XK_h,          rotate_client,     {.i = -1}},
+    {  MOD4|CONTROL,     XK_l,          rotate_client,     {.i = +1}},
     /* jump to the next/previous desktop with all windows */
-    {  MOD4|CONTROL|SHIFT, XK_m,        rotate_filled,     {.i = -1}},
-    {  MOD4|CONTROL|SHIFT, XK_i,        rotate_filled,     {.i = +1}},
+    {  MOD4|CONTROL|SHIFT, XK_h,        rotate_filled,     {.i = -1}},
+    {  MOD4|CONTROL|SHIFT, XK_l,        rotate_filled,     {.i = +1}},
 
     /* resize master/first stack window */
-    {  MOD4,             XK_m,          resize_master,     {.i = -10}},
-    {  MOD4,             XK_i,          resize_master,     {.i = +10}},
-    {  MOD4,             XK_y,          resize_stack,      {.i = -10}},
-    {  MOD4,             XK_j,          resize_stack,      {.i = +10}},
+    {  MOD4,             XK_h,          resize_master,     {.i = -10}},
+    {  MOD4,             XK_l,          resize_master,     {.i = +10}},
+    {  MOD4,             XK_o,          resize_stack,      {.i = -10}},
+    {  MOD4,             XK_p,          resize_stack,      {.i = +10}},
 
     /* resize the borders */
-    {  MOD4|CONTROL,     XK_l,          adjust_borders,    {.i = -1}},
-    {  MOD4|CONTROL,     XK_u,          adjust_borders,    {.i = +1}},
+    {  MOD4|CONTROL,     XK_u,          adjust_borders,    {.i = -1}},
+    {  MOD4|CONTROL,     XK_i,          adjust_borders,    {.i = +1}},
     /* resize the useless gaps between the windows */
-    {  MOD4|CONTROL,     XK_y,          adjust_gaps,       {.i = -1}},
-    {  MOD4|CONTROL,     XK_j,          adjust_gaps,       {.i = +1}},
+    {  MOD4|CONTROL,     XK_o,          adjust_gaps,       {.i = -1}},
+    {  MOD4|CONTROL,     XK_p,          adjust_gaps,       {.i = +1}},
     /* toggle the panel space */
-    {  MOD4|CONTROL,     XK_v,          togglepanel,       {NULL}},
+    {  MOD4|CONTROL,     XK_b,          togglepanel,       {NULL}},
 
     /* exit */
     {  MOD4|CONTROL,     XK_q,          quit,              {.i = 0}},
