@@ -65,6 +65,7 @@ static const AppRule rules[] = { \
  * window. The title of the scratchpad window should also match SCRPDNAME from
  * above
  */
+static const char *browsercmd[] = { "qutebrowser", NULL };
 static const char *termcmd[] = { "xterm",     NULL };
 static const char *menucmd[] = { "dmenu_run", NULL };
 static const char *scrpcmd[] = { "xterm", "-T", "scratchpad", NULL };
@@ -137,6 +138,7 @@ static key keys[] = {
     /* spawn terminal, dmenu, w/e you want to */
     {  MOD4|SHIFT,       XK_Return,     spawn,             {.com = termcmd}},
     {  MOD4,             XK_r,          spawn,             {.com = menucmd}},
+    {  MOD4,             XK_w,          spawn,             {.com = browsercmd}},
     /* kill current window */
     {  MOD4|SHIFT,       XK_c,          killclient,        {NULL}},
 
