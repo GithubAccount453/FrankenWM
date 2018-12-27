@@ -97,10 +97,10 @@ static key keys[] = {
     /* swap the current window to master */
     {  MOD4,             XK_Return,     swap_master,       {NULL}},
     /* maximize the current window */
-    {  MOD4,             XK_g,          maximize,          {NULL}},
+    {  MOD4,             XK_t,          maximize,          {NULL}},
     /* minimize window to queue/pull window from queue */
-    {  MOD4,             XK_m,          minimize,          {NULL}},
-    {  MOD4,             XK_h,          restore,           {NULL}},
+    {  MOD4,             XK_h,          minimize,          {NULL}},
+    {  MOD4,             XK_m,          restore,           {NULL}},
     /* move the current window to the center of the screen, floating */
     {  MOD4,             XK_d,          centerwindow,      {NULL}},
     /* toggles inverted stacking modes (left/top stack) */
@@ -167,15 +167,15 @@ static key keys[] = {
     /* resize master/first stack window */
     {  MOD4,             XK_k,          resize_master,     {.i = -10}},
     {  MOD4,             XK_i,          resize_master,     {.i = +10}},
-    {  MOD4,             XK_y,          resize_stack,      {.i = -10}},
-    {  MOD4,             XK_u,          resize_stack,      {.i = +10}},
+    {  MOD4,             XK_u,          resize_stack,      {.i = -10}},
+    {  MOD4,             XK_y,          resize_stack,      {.i = +10}},
 
     /* resize the borders */
-    {  MOD4|CONTROL,     XK_l,          adjust_borders,    {.i = -1}},
-    {  MOD4|CONTROL,     XK_u,          adjust_borders,    {.i = +1}},
+    {  MOD4|CONTROL,     XK_j,          adjust_borders,    {.i = -1}},
+    {  MOD4|CONTROL,     XK_l,          adjust_borders,    {.i = +1}},
     /* resize the useless gaps between the windows */
-    {  MOD4|CONTROL,     XK_y,          adjust_gaps,       {.i = -1}},
-    {  MOD4|CONTROL,     XK_l,          adjust_gaps,       {.i = +1}},
+    {  MOD4|CONTROL,     XK_u,          adjust_gaps,       {.i = -1}},
+    {  MOD4|CONTROL,     XK_y,          adjust_gaps,       {.i = +1}},
     /* toggle the panel space */
     {  MOD4|CONTROL,     XK_z,          togglepanel,       {NULL}},
 
