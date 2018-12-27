@@ -66,10 +66,9 @@ static const AppRule rules[] = { \
  * above
  */
 static const char *browsercmd[] = { "qutebrowser", NULL };
-static const char *termcmd[] = { "xterm",     NULL };
+static const char *termcmd[] = { "urxvt",     NULL };
 static const char *menucmd[] = { "dmenu_run", NULL };
-static const char *scrpcmd[] = { "xterm", "-T", "scratchpad", NULL };
-/* static const char *scrpcmd[] = { "urxvt", "-name", "scratchpad",  NULL }; */
+static const char *scrpcmd[] = { "urxvt", "-name", "scratchpad",  NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD4,             K,              change_desktop, {.i = N}}, \
